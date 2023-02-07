@@ -8,7 +8,7 @@ def update_random(particles, colourSpan):
         colourSpan (tuple[float, float]): Range of colour
     """
     # Generate random colour integer
-    colour = np.random.randint(colourSpan[0], colourSpan[1], len(particles))
+    colour = np.random.randint(0, colourSpan, len(particles))
 
     # Set colours
     particles['colour'] = colour
@@ -18,7 +18,7 @@ def get_colour_map(colourSpan):
     """Get a hashmap of colours.
 
     Args:
-        colourSpan (tuple[float, float]): Range of colour
+        colourSpan (int): Number of colours
 
     Returns:
         dict[int, (int, int, int)]: Colour hashmap
@@ -27,7 +27,7 @@ def get_colour_map(colourSpan):
     colourMap = {}
 
     # Add colours to map
-    for i in range(colourSpan[0], colourSpan[1]):
+    for i in range(0, colourSpan):
         randomColour = np.random.randint(0, 255, 3)
         colourMap[i] = randomColour
 
