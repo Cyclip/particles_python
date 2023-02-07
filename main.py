@@ -6,14 +6,14 @@ import colours
 import behaviour
 
 # Simulation constants
-PARTICLE_COUNT = 200
-X_SPAN = (0, 500)
-Y_SPAN = (0, 500)
-COLOURS = 6
+PARTICLE_COUNT = 500
+X_SPAN = (0, 700)
+Y_SPAN = (0, 700)
+COLOURS = 7
 MIN_DISTANCE = 1
-MAX_VELOCITY = 2
+MAX_VELOCITY = 100
 RESISTANCE = 0.9
-NEARBY_DISTANCE = 100
+NEARBY_DISTANCE = 40
 
 # Graphics constants
 SCREEN_SIZE = (1200, 750)
@@ -81,6 +81,27 @@ def main():
 
         # Clear screen
         screen.fill(BACKGROUND_COLOUR)
+
+        # Split span into 10
+        xSpan = X_SPAN[1] / 10
+        ySpan = Y_SPAN[1] / 10
+
+        # Draw grid
+        for x in range(0, 10):
+            pygame.draw.line(
+                screen,
+                (12, 12, 12, 128),
+                determinePosition((xSpan * x, 0)),
+                determinePosition((xSpan * x, Y_SPAN[1]))
+            )
+
+        for y in range(0, 10):
+            pygame.draw.line(
+                screen,
+                (12, 12, 12, 128),
+                determinePosition((0, ySpan * y)),
+                determinePosition((X_SPAN[1], ySpan * y))
+            )
 
         # Draw particles
         for particle in particles:

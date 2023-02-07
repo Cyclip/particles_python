@@ -114,7 +114,7 @@ def getAttraction(behaviour, thisColour, otherColour, distance, minDistance):
     """
     if distance < minDistance:
         # Too close, repel
-        attraction = (1 / minDistance) * distance - 5
+        attraction = (1 / minDistance) * distance - 1
     else:
         # Get attraction
         attraction = behaviour[thisColour][otherColour]
